@@ -53,3 +53,12 @@ select  SchoolDetails.Student_Name AS School_Student_Name,
 FROM SchoolDetails
 right JOIN CollegeDetails
 ON SchoolDetails.Enrollment_ID = CollegeDetails.Enrollment_ID;
+#####################
+select  SchoolDetails.Enrollment_ID,
+SchoolDetails.Student_Name,
+SchoolDetails.School_Name,
+CollegeDetails.Student_Name,    
+    CollegeDetails.Enrollment_ID ,
+    CollegeDetails.College_Name
+FROM SchoolDetails
+cross JOIN CollegeDetails;
