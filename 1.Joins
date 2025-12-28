@@ -1,0 +1,55 @@
+create database Joins;
+use Joins;
+create table SchoolDetails(
+	School_Name varchar(100) not null,
+    Student_Name varchar(100) not null,
+    Enrollment_ID int primary key
+);
+create table CollegeDetails(
+    College_Name varchar(100) not null,
+    Student_Name varchar(100) not null,
+    Enrollment_ID int primary key
+);
+insert into SchoolDetails values('Aruna Higher Secondary School','Aruna',101),('Roever Higher Secondary School','Dhivani',102),('Sathya Sai Matriculation School','Kishanthini',103),('P.S.V School','Mithra',104),('Greenpark CBSE SChool','Nigazh',105);
+insert into CollegeDetails values('Jeppiaar Engineering College','SriAruna',105),('SSN Engineering College','Shanu',106),('SRM College','SriHari',101),('Anna University','Ashika',102),('SathyaBama University','Shirdha',107);
+select*from SchoolDetails;
+select * from CollegeDetails;
+select  SchoolDetails.Student_Name AS School_Student_Name,
+    SchoolDetails.School_Name,
+    CollegeDetails.Student_Name AS College_Student_Name,
+    CollegeDetails.College_Name
+FROM SchoolDetails
+INNER JOIN CollegeDetails
+ON SchoolDetails.Enrollment_ID = CollegeDetails.Enrollment_ID;
+#############################
+select  SchoolDetails.Student_Name AS School_Student_Name,
+    SchoolDetails.School_Name,
+    CollegeDetails.Student_Name AS College_Student_Name,
+    CollegeDetails.College_Name
+FROM SchoolDetails
+left JOIN CollegeDetails
+ON SchoolDetails.Enrollment_ID = CollegeDetails.Enrollment_ID;
+#############################
+select  SchoolDetails.Student_Name AS School_Student_Name,
+    SchoolDetails.School_Name,
+    CollegeDetails.Student_Name AS College_Student_Name,
+    CollegeDetails.College_Name
+FROM SchoolDetails
+right JOIN CollegeDetails
+ON SchoolDetails.Enrollment_ID = CollegeDetails.Enrollment_ID;
+################################
+select  SchoolDetails.Student_Name AS School_Student_Name,
+    SchoolDetails.School_Name,
+    CollegeDetails.Student_Name AS College_Student_Name,
+    CollegeDetails.College_Name
+FROM SchoolDetails
+left JOIN CollegeDetails
+ON SchoolDetails.Enrollment_ID = CollegeDetails.Enrollment_ID
+union
+select  SchoolDetails.Student_Name AS School_Student_Name,
+    SchoolDetails.School_Name,
+    CollegeDetails.Student_Name AS College_Student_Name,
+    CollegeDetails.College_Name
+FROM SchoolDetails
+right JOIN CollegeDetails
+ON SchoolDetails.Enrollment_ID = CollegeDetails.Enrollment_ID;
