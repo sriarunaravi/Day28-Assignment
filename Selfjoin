@@ -1,0 +1,29 @@
+create database selfjoin;
+use selfjoin;
+drop table products;
+create table Products(
+Product_Id varchar(5) not null,
+Product_Name varchar(50) not null,
+Order_Id int not null
+);
+
+insert into Products(Product_Id,Product_Name,Order_Id) values ('1','Cinthol',2),
+('2','Pears',5),
+    ('3','Ponds',6),
+    ('4','Exo Liquid',7),
+    ('5','Vim Liquid',8),
+    ('6','Enchanteur',9),
+    ('7','Fridge',10);
+    alter table Products add column Product_Category varchar(100) not null;
+SELECT 
+    p1.Product_Name,
+    CASE 
+        WHEN p1.Product_Name LIKE '%Cinthol%' THEN 'Soap'
+		WHEN p1.Product_Name LIKE '%Pears%' THEN 'Soap'
+        WHEN p1.Product_Name LIKE '%liquid%' THEN 'Washing Liquid'
+        WHEN p1.Product_Name LIKE '%Ponds%' THEN 'Powder'
+           WHEN p1.Product_Name LIKE '%Enchanteur%' THEN 'Powder'
+        ELSE 'Other'
+    END AS Category
+FROM 
+    Products p1;
